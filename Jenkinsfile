@@ -11,7 +11,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh' 
             }
@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
-                input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
+                sleep time: 60, unit: 'SECONDS'
                 sh './jenkins/scripts/kill.sh'
             }
         }
